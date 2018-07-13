@@ -29,6 +29,21 @@ jobs:
             echo "$GCP_SA_KEY" > /tmp/sa-key.json
             gcloud auth activate-service-account --key-file=/tmp/sa-key.json
             gcloud app deploy --project=bvdp-saturn-prod --promote --quiet
+  delete-old-versions:
+    docker:
+      - image: google/cloud-sdk:latest
+    steps:
+      - run:
+          name: Delete old versions
+          command: |
+            set -o nounset
+            echo "$GCP_SA_KEY" > /tmp/sa-key.json
+            gcloud auth activate-service-account --key-file=/tmp/sa-key.json
+            gcloud config set project bvdp-saturn-prod
+            OLD_VERSIONS=$(gcloud app versions list --service=default --sort-by='~id' --format='value(id)' | sed '1,10d')
+            if [ -n "$OLD_VERSIONS" ]; then
+              gcloud app versions delete $OLD_VERSIONS --service=default --quiet
+            fi
 workflows:
   version: 2
   deploy-prod:
@@ -44,3 +59,13 @@ workflows:
       - deploy:
           requires:
             - find-build
+  cleanup:
+    triggers:
+      - schedule:
+          cron: "0 16 * * 1"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - delete-old-versions
