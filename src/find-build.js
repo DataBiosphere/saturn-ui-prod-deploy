@@ -1,6 +1,6 @@
 const fetch = require('node-fetch')
 
-const BASE = 'https://circleci.com/api/v1.1/project/github/DataBiosphere/saturn-ui'
+const BASE = 'https://circleci.com/api/v1.1/project/github/DataBiosphere/terra-ui'
 
 const findBuild = async () => {
   const jobs = await fetch(`${BASE}/tree/dev?filter=successful`).then(r => r.json())
