@@ -16,7 +16,7 @@ jobs:
             - artifact-url
   deploy:
     docker:
-      - image: google/cloud-sdk:latest
+      - image: google/cloud-sdk:alpine
     steps:
       - attach_workspace:
           at: /tmp/workspace
@@ -31,7 +31,7 @@ jobs:
             gcloud app deploy --project=bvdp-saturn-prod --promote --quiet
   delete-old-versions:
     docker:
-      - image: google/cloud-sdk:latest
+      - image: google/cloud-sdk:alpine
     steps:
       - run:
           name: Delete old versions
