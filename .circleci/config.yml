@@ -1,8 +1,17 @@
-version: 2
+version: 2.1
+
+executors:
+  node:
+    docker:
+      - image: node:12
+        user: node
+  gcloud:
+    docker:
+      - image: google/cloud-sdk:alpine
+
 jobs:
   find-build:
-    docker:
-      - image: node:8
+    executor: node
     steps:
       - checkout
       - run:
@@ -15,8 +24,7 @@ jobs:
           paths:
             - artifact-url
   deploy:
-    docker:
-      - image: google/cloud-sdk:alpine
+    executor: gcloud
     steps:
       - attach_workspace:
           at: /tmp/workspace
@@ -30,8 +38,7 @@ jobs:
             gcloud auth activate-service-account --key-file=/tmp/sa-key.json
             gcloud app deploy --project=bvdp-saturn-prod --promote --quiet
   delete-old-versions:
-    docker:
-      - image: google/cloud-sdk:alpine
+    executor: gcloud
     steps:
       - run:
           name: Delete old versions
@@ -44,6 +51,7 @@ jobs:
             if [ -n "$OLD_VERSIONS" ]; then
               gcloud app versions delete $OLD_VERSIONS --service=default --quiet
             fi
+
 workflows:
   version: 2
   deploy-prod:
