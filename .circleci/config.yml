@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  slack: circleci/slack@3.4.2
+
 executors:
   node:
     docker:
@@ -37,6 +40,12 @@ jobs:
             echo "$GCP_SA_KEY" > /tmp/sa-key.json
             gcloud auth activate-service-account --key-file=/tmp/sa-key.json
             gcloud app deploy --project=bvdp-saturn-prod --promote --quiet
+      - slack/status:
+          channel: "C6DTFUCDD" # workbench-release
+          include_job_number_field: false
+          include_project_field: false
+          failure_message: ":sadpanda: $CIRCLE_JOB failed."
+          success_message: ":circleci-pass: $CIRCLE_JOB ran successfully."
   delete-old-versions:
     executor: gcloud
     steps:
