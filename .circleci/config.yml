@@ -20,7 +20,7 @@ jobs:
       - run:
           name: Find build artifact
           command: |
-            npm install
+            yarn install
             node src/find-build.js > artifact-url
       - persist_to_workspace:
           root: .
