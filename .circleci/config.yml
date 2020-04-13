@@ -63,19 +63,19 @@ jobs:
 
 workflows:
   version: 2
-#  deploy-prod:
-#    triggers:
-#      - schedule:
-#          cron: "0 15 * * 1-5"
-#          filters:
-#            branches:
-#              only:
-#                - master
-#    jobs:
-#      - find-build
-#      - deploy:
-#          requires:
-#            - find-build
+  deploy-prod:
+    triggers:
+      - schedule:
+          cron: "0 15 * * 1-5"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - find-build
+      - deploy:
+          requires:
+            - find-build
   cleanup:
     triggers:
       - schedule:
