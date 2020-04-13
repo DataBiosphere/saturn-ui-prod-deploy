@@ -35,7 +35,7 @@ jobs:
           name: Deploy
           command: |
             set -o nounset
-            curl -s -f $(< /tmp/workspace/artifact-url) | tar -xz
+            curl -L -s -f $(< /tmp/workspace/artifact-url) | tar -xz
             cp config/prod.json build/config.json
             echo "$GCP_SA_KEY" > /tmp/sa-key.json
             gcloud auth activate-service-account --key-file=/tmp/sa-key.json
