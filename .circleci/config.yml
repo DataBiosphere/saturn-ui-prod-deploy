@@ -34,12 +34,16 @@ jobs:
       - deploy:
           name: Deploy
           command: |
-            set -o nounset
-            curl -L -s -f $(< /tmp/workspace/artifact-url) | tar -xz
-            cp config/prod.json build/config.json
-            echo "$GCP_SA_KEY" > /tmp/sa-key.json
-            gcloud auth activate-service-account --key-file=/tmp/sa-key.json
-            gcloud app deploy --project=bvdp-saturn-prod --promote --quiet
+            if [[ "$PREVENT_DEPLOY" = true ]]; then
+              circleci-agent step halt
+            else
+              set -o nounset
+              curl -L -s -f $(< /tmp/workspace/artifact-url) | tar -xz
+              cp config/prod.json build/config.json
+              echo "$GCP_SA_KEY" > /tmp/sa-key.json
+              gcloud auth activate-service-account --key-file=/tmp/sa-key.json
+              gcloud app deploy --project=bvdp-saturn-prod --promote --quiet
+            fi
       - slack/status:
           channel: "C6DTFUCDD" # workbench-release
           include_job_number_field: false
