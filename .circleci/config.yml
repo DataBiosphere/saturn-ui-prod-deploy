@@ -51,7 +51,7 @@ jobs:
 
             # Do not release on Broad Holidays
             for val in "${HOLIDAYS[@]}"; do
-                 if [ ${val} = "${CURRDATE}" ]; then
+                 if [ "${val}" = "${CURRDATE}" ]; then
                     echo Holiday - no release
                     circleci-agent step halt
                  fi
