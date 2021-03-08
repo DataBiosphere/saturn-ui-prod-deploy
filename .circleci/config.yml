@@ -34,7 +34,19 @@ jobs:
       - deploy:
           name: Deploy
           command: |
+            # Do not release on Broad Holidays
+            CURRDATE=$(date +%m/%d/%Y)
+             array=("03/12/2021" "4/19/2021" "5/28/2021" "5/31/2021" "7/2/2021" "7/5/2021"
+             "9/6/2021" "10/11/2021" "11/11/2021" "11/25/2021" "11/26/2021" "12/23/2021" "12/24/2021"
+              "12/27/2021" "12/28/2021" "12/29/2021" "12/30/2021" "12/30/2021")
+            for val in "${array[@]}"; do
+                 if [ ${val} = "${CURRDATE}" ]; then
+                    echo Holiday - no release
+                    circleci-agent step halt
+                 fi
+            done
             if [[ "$PREVENT_DEPLOY" = true ]]; then
+              echo PREVENT_DEPLOY is enabled - no release
               circleci-agent step halt
             else
               set -o nounset
