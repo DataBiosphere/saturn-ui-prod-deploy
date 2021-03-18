@@ -39,7 +39,7 @@ jobs:
             CURRDATE="$(date +%m/%d/%Y)"
 
             # Holiday dates specific to 2021 that will need to be updated next year
-            HOLIDAYS=("03/12/2021" "04/19/2021" "05/28/2021" "05/31/2021" "07/02/2021" "07/05/2021"
+            HOLIDAYS=("03/12/2021" "03/18/2021" "04/19/2021" "05/28/2021" "05/31/2021" "07/02/2021" "07/05/2021"
             "09/06/2021" "10/11/2021" "11/11/2021" "11/25/2021" "11/26/2021" "12/23/2021")
 
             # List of Holidays the Broad is closed for every year
@@ -54,6 +54,7 @@ jobs:
                  if [ "${val}" = "${CURRDATE}" ]; then
                     echo Holiday - no release
                     circleci-agent step halt
+                    exit 0
                  fi
             done
 
