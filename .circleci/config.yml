@@ -6,7 +6,7 @@ orbs:
 executors:
   node:
     docker:
-      - image: node:12
+      - image: node:14
         user: node
   gcloud:
     docker:
@@ -19,13 +19,10 @@ jobs:
       - checkout
       - run:
           name: Find build artifact
-          command: |
-            yarn install
-            node src/find-build.js > artifact-url
+          command: "yarn find-build > artifact-url"
       - persist_to_workspace:
           root: .
-          paths:
-            - artifact-url
+          paths: [ artifact-url ]
   deploy:
     executor: gcloud
     steps:
