@@ -1,12 +1,17 @@
 const fetch = require('node-fetch')
 
-const BASE = 'https://circleci.com/api/v1.1/project/github/DataBiosphere/terra-ui'
+const base = 'https://circleci.com/api/v2'
+const projectSlug = 'gh/DataBiosphere/terra-ui'
 
 const findBuild = async () => {
-  const jobs = await fetch(`${BASE}/tree/dev?filter=successful`).then(r => r.json())
-  const latest = jobs.find(j => j.workflows && j.workflows.job_name === 'build')
-  const artifacts = await fetch(`${BASE}/${latest.build_num}/artifacts`).then(r => r.json())
-  console.log(artifacts[0].url)
+  const workflows = await fetch(`${base}/insights/${projectSlug}/workflows/build-deploy?branch=dev`).then(r => r.json()).then(o => o.items)
+  const latestWorkflow = workflows.find(w => w.status === 'success')
+
+  const workflowJobs = await fetch(`${base}/workflow/${latestWorkflow.id}/job`).then(r => r.json()).then(o => o.items)
+  const buildJob = workflowJobs.find(j => j.name === 'build' && j.status === 'success')
+
+  const jobArtifacts = await fetch(`${base}/project/${projectSlug}/${buildJob.job_number}/artifacts`).then(r => r.json()).then(o => o.items)
+  console.log(jobArtifacts[0].url)
 }
 
 findBuild()
