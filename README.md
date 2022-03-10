@@ -37,3 +37,9 @@ If you cannot access this project you will need to contact dsp-devops. You can r
   
 ![Migration dialog screenshot](docs/migrate-dialog.png)
 
+6. Confirm that the release has been rolled back and is working by visiting [Terra](https://app.terra.bio/) and checking the build date of the application by scrolling to the bottom of the hamburger menu:
+
+![Terra build date](docs/terra-build-date.png)
+
+7. Make an announcement on the [terra-ui](https://broadinstitute.slack.com/archives/C01EHNUM73R) channel that you have completed the rollback.
+ 
