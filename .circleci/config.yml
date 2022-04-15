@@ -22,6 +22,12 @@ jobs:
       - persist_to_workspace:
           root: .
           paths: [ artifact-url ]
+      - slack/status:
+          channel: "C6DTFUCDD" # workbench-release
+          include_job_number_field: false
+          include_project_field: false
+          fail_only: true
+          failure_message: ":sadpanda: $CIRCLE_JOB failed."
   deploy:
     executor: gcloud
     steps:
