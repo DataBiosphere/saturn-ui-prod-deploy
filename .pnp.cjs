@@ -35,58 +35,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {
           "packageLocation": "./",
           "packageDependencies": [
-            ["node-fetch", "npm:3.2.3"]
+            ["node-fetch", "npm:2.6.6"]
           ],
           "linkType": "SOFT",
         }]
       ]],
-      ["data-uri-to-buffer", [
-        ["npm:4.0.0", {
-          "packageLocation": "./.yarn/cache/data-uri-to-buffer-npm-4.0.0-e7a49f58f7-a010653869.zip/node_modules/data-uri-to-buffer/",
-          "packageDependencies": [
-            ["data-uri-to-buffer", "npm:4.0.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["fetch-blob", [
-        ["npm:3.1.5", {
-          "packageLocation": "./.yarn/cache/fetch-blob-npm-3.1.5-82671261d9-6493f21bfe.zip/node_modules/fetch-blob/",
-          "packageDependencies": [
-            ["fetch-blob", "npm:3.1.5"],
-            ["node-domexception", "npm:1.0.0"],
-            ["web-streams-polyfill", "npm:3.2.1"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["formdata-polyfill", [
-        ["npm:4.0.10", {
-          "packageLocation": "./.yarn/cache/formdata-polyfill-npm-4.0.10-e03013c013-82a34df292.zip/node_modules/formdata-polyfill/",
-          "packageDependencies": [
-            ["formdata-polyfill", "npm:4.0.10"],
-            ["fetch-blob", "npm:3.1.5"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["node-domexception", [
-        ["npm:1.0.0", {
-          "packageLocation": "./.yarn/cache/node-domexception-npm-1.0.0-e1e813b76f-ee1d37dd2a.zip/node_modules/node-domexception/",
-          "packageDependencies": [
-            ["node-domexception", "npm:1.0.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["node-fetch", [
-        ["npm:3.2.3", {
-          "packageLocation": "./.yarn/cache/node-fetch-npm-3.2.3-0f62fc8780-6f702b2683.zip/node_modules/node-fetch/",
+        ["npm:2.6.6", {
+          "packageLocation": "./.yarn/cache/node-fetch-npm-2.6.6-056db6b778-ee8290626b.zip/node_modules/node-fetch/",
           "packageDependencies": [
-            ["node-fetch", "npm:3.2.3"],
-            ["data-uri-to-buffer", "npm:4.0.0"],
-            ["fetch-blob", "npm:3.1.5"],
-            ["formdata-polyfill", "npm:4.0.10"]
+            ["node-fetch", "npm:2.6.6"],
+            ["whatwg-url", "npm:5.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -96,16 +55,36 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",
           "packageDependencies": [
             ["saturn-ui-prod-deploy", "workspace:."],
-            ["node-fetch", "npm:3.2.3"]
+            ["node-fetch", "npm:2.6.6"]
           ],
           "linkType": "SOFT",
         }]
       ]],
-      ["web-streams-polyfill", [
-        ["npm:3.2.1", {
-          "packageLocation": "./.yarn/cache/web-streams-polyfill-npm-3.2.1-835bd3857e-b119c78574.zip/node_modules/web-streams-polyfill/",
+      ["tr46", [
+        ["npm:0.0.3", {
+          "packageLocation": "./.yarn/cache/tr46-npm-0.0.3-de53018915-726321c5ea.zip/node_modules/tr46/",
           "packageDependencies": [
-            ["web-streams-polyfill", "npm:3.2.1"]
+            ["tr46", "npm:0.0.3"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["webidl-conversions", [
+        ["npm:3.0.1", {
+          "packageLocation": "./.yarn/cache/webidl-conversions-npm-3.0.1-60310f6a2b-c92a0a6ab9.zip/node_modules/webidl-conversions/",
+          "packageDependencies": [
+            ["webidl-conversions", "npm:3.0.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["whatwg-url", [
+        ["npm:5.0.0", {
+          "packageLocation": "./.yarn/cache/whatwg-url-npm-5.0.0-374fb45e60-b8daed4ad3.zip/node_modules/whatwg-url/",
+          "packageDependencies": [
+            ["whatwg-url", "npm:5.0.0"],
+            ["tr46", "npm:0.0.3"],
+            ["webidl-conversions", "npm:3.0.1"]
           ],
           "linkType": "HARD",
         }]
