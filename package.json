@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "node-fetch": "^2.6.6"
+    "node-fetch": "^2.6.7"
   },
   "scripts": {
     "find-build": "node src/find-build.js"

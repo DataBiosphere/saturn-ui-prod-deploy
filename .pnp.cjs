@@ -35,17 +35,30 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {
           "packageLocation": "./",
           "packageDependencies": [
-            ["node-fetch", "npm:2.6.6"]
+            ["node-fetch", "virtual:5f4eec430d4e7ca9651c1169e729e33e3061a47a99bd089c0d00477e7976cba11a176afbc5eb39b31cb1e56c6d72b7d141a7fb897e239434180ba4f199d36bc2#npm:2.6.7"]
           ],
           "linkType": "SOFT",
         }]
       ]],
       ["node-fetch", [
-        ["npm:2.6.6", {
-          "packageLocation": "./.yarn/cache/node-fetch-npm-2.6.6-056db6b778-ee8290626b.zip/node_modules/node-fetch/",
+        ["npm:2.6.7", {
+          "packageLocation": "./.yarn/cache/node-fetch-npm-2.6.7-777aa2a6df-8d816ffd1e.zip/node_modules/node-fetch/",
           "packageDependencies": [
-            ["node-fetch", "npm:2.6.6"],
+            ["node-fetch", "npm:2.6.7"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:5f4eec430d4e7ca9651c1169e729e33e3061a47a99bd089c0d00477e7976cba11a176afbc5eb39b31cb1e56c6d72b7d141a7fb897e239434180ba4f199d36bc2#npm:2.6.7", {
+          "packageLocation": "./.yarn/__virtual__/node-fetch-virtual-395ddd9cc5/0/cache/node-fetch-npm-2.6.7-777aa2a6df-8d816ffd1e.zip/node_modules/node-fetch/",
+          "packageDependencies": [
+            ["node-fetch", "virtual:5f4eec430d4e7ca9651c1169e729e33e3061a47a99bd089c0d00477e7976cba11a176afbc5eb39b31cb1e56c6d72b7d141a7fb897e239434180ba4f199d36bc2#npm:2.6.7"],
+            ["@types/encoding", null],
+            ["encoding", null],
             ["whatwg-url", "npm:5.0.0"]
+          ],
+          "packagePeers": [
+            "@types/encoding",
+            "encoding"
           ],
           "linkType": "HARD",
         }]
@@ -55,7 +68,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",
           "packageDependencies": [
             ["saturn-ui-prod-deploy", "workspace:."],
-            ["node-fetch", "npm:2.6.6"]
+            ["node-fetch", "virtual:5f4eec430d4e7ca9651c1169e729e33e3061a47a99bd089c0d00477e7976cba11a176afbc5eb39b31cb1e56c6d72b7d141a7fb897e239434180ba4f199d36bc2#npm:2.6.7"]
           ],
           "linkType": "SOFT",
         }]
