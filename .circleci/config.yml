@@ -80,7 +80,7 @@ jobs:
             fi
       - run:
           name: Output revision
-          command: cat revision
+          command: cat /tmp/workspace/revision
       - slack/status:
           channel: "C6DTFUCDD" # workbench-release
           include_job_number_field: false
