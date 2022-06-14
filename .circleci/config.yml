@@ -18,10 +18,15 @@ jobs:
       - checkout
       - run:
           name: Find build artifact
-          command: "yarn find-build > artifact-url"
+          command: |
+            yarn find-build > build-info
+            jq --raw-output .artifactUrl < build-info > artifact-url
+            jq --raw-output .revision < build-info > revision
       - persist_to_workspace:
           root: .
-          paths: [ artifact-url ]
+          paths:
+            - artifact-url
+            - revision
       - slack/status:
           channel: "C6DTFUCDD" # workbench-release
           include_job_number_field: false
@@ -73,6 +78,9 @@ jobs:
               gcloud auth activate-service-account --key-file=/tmp/sa-key.json
               gcloud app deploy --project=bvdp-saturn-prod --promote --quiet
             fi
+      - run:
+          name: Output revision
+          command: cat revision
       - slack/status:
           channel: "C6DTFUCDD" # workbench-release
           include_job_number_field: false
