@@ -6,7 +6,7 @@ orbs:
 executors:
   node:
     docker:
-      - image: cimg/node:16.14
+      - image: cimg/node:18.10
   gcloud:
     docker:
       - image: google/cloud-sdk:alpine
