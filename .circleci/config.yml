@@ -45,11 +45,11 @@ jobs:
             CURRYEAR="$(date +%Y)"
             CURRDATE="$(date +%m/%d/%Y)"
 
-            # Holiday dates specific to 2022 that will need to be updated next year
-            # as per https://intranet.broadinstitute.org/keywords/holiday-calendar
+            # Holiday dates specific to 2023 that will need to be updated towards the end of that year
+            # as per https://intranet.broadinstitute.org/faq/what-broads-holiday-schedule
             # and https://intranet.broadinstitute.org/hr/human-resources-policy-manual/time
-            HOLIDAYS=("12/23/2021" "01/17/2022" "02/21/2022" "04/18/2022" "05/30/2022" "06/20/2022" "07/01/2022" "07/04/2022"
-            "09/02/2022" "09/05/2022" "10/10/2022" "11/11/2022" "11/24/2022" "11/25/2022" "12/23/2022")
+            HOLIDAYS=("12/23/2022" "01/02/2023" "01/16/2023" "02/20/2023" "04/17/2023" "05/29/2023" "06/19/2023" "07/04/2023"
+            "09/04/2023" "10/09/2023" "11/10/2023" "11/23/2023" "11/24/2023" "12/25/2023")
 
             # List of Holidays the Broad is closed for every year
             HOLIDAYSEACHYEAR=("01/01" "06/19" "07/04" "11/11" "12/24" "12/25" "12/26" "12/27" "12/28" "12/29" "12/30" "12/31")
