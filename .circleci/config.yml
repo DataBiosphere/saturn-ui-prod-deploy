@@ -107,7 +107,7 @@ workflows:
   deploy-prod:
     triggers:
       - schedule:
-          cron: "0 16 * * 1-5"
+          cron: "0 15 * * 1-5"
           filters:
             branches:
               only:
