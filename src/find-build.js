@@ -15,6 +15,8 @@ const findBuild = async () => {
   const workflowJobs = await fetch(`${base}/v2/workflow/${latestWorkflow.id}/job`).then(r => r.json()).then(o => o.items)
   const buildJob = workflowJobs.find(j => j.name === 'build' && j.status === 'success')
 
+  // The v2 artifacts API requires authentication with a personal access token.
+  // The v1.1 artifacts API does not, so we use it instead.
   const jobArtifacts = await fetch(`${base}/v1.1/project/${projectSlug}/${buildJob.job_number}/artifacts`).then(r => r.json());
   const buildArtifact = jobArtifacts.find(artifact => artifact.path === buildArtifactPath)
   const artifactUrl = buildArtifact.url
